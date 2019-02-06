@@ -13,11 +13,13 @@ const TodoView = () => (
     <TodoApp/>
 );
 
+
 class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state={isLoggedIn: false}
+        localStorage.setItem('emailDefault',"SergioRt");
+        localStorage.setItem('passwordDefault',"ieti");
     }
 
     render() {
@@ -34,12 +36,12 @@ class App extends Component {
                     <br/>
 
                     <ul>
-                        {this.state.isLoggedIn?
+                        {localStorage.getItem('isLoggedIn') === "true"?
                             <li><Link to="/todo">Todo</Link></li> : <li><Link to="/">Login</Link></li>}
                     </ul>
 
                     <div>
-                        {this.state.isLoggedIn?
+                        {localStorage.getItem('isLoggedIn') === "true"?
                             < Route path = "/todo" component={TodoView}/> : <Route exact path="/" component={LoginView}/>
                         }
                     </div>
